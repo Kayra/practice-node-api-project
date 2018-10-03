@@ -16,15 +16,15 @@ export const ContactSchema = new Schema({
   },
 
   email: {
-    type: String,
+    type: String
   },
 
   company: {
-    type: String,
+    type: String
   },
 
   phone: {
-    type: Number,
+    type: Number
   },
 
   created_date: {
