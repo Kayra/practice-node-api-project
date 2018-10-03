@@ -20,6 +20,14 @@ export class ContactController {
 
   }
 
+  public getContact(request: Request, response: Response) {
+
+    Contact.findbyId(request.params.contactId, (error, contact) => {
+      this.returnJsonContactOrError(response, error, contact);
+    })
+
+  }
+
   public addNewContact(request: Request, response: Response) {
 
     let newContact = new Contact(request.body);
