@@ -8,12 +8,24 @@ const Contact = mongoose.model("Contact", ContactSchema);
 
 export class ContactController {
 
+  private returnJsonContactOrError = (response, error, contactObject) => {
+    return error ? response.send(error) : response.json(contactObject)
+  }
+
+  public getContacts(request: Request, response: Response) {
+
+    Contact.find({}, (error, contact) => {
+      this.returnJsonContactOrError(response, error, contact); 
+    });
+
+  }
+
   public addNewContact(request: Request, response: Response) {
 
     let newContact = new Contact(request.body);
 
     newContact.save((error, contact) => {
-      error ? response.send(error) : response.json(contact);
+      this.returnJsonContactOrError(response, error, contact); 
     });
 
   }

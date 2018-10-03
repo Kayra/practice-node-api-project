@@ -18,11 +18,7 @@ export class Routes {
 
     app.route('/contact')
 
-    .get((request: Request, response: Response) => {
-      response.status(200).send({
-        message: "This is the GET endpoint for contacts."
-      })
-    })
+    .get(this.contactController.getContacts)
 
     .post(this.contactController.addNewContact)
 
