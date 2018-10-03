@@ -35,6 +35,7 @@ export class Routes {
     app.route('/contact/:contactId')
     .get(this.contactController.getContact)
     .put(this.contactController.updateContact)
+    .delete(this.contactController.deleteContact)
 
   }
 
