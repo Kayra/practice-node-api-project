@@ -46,4 +46,12 @@ export class ContactController {
 
   }
 
+  public deleteContact(request: Request, response: Response) {
+
+    Contact.remove({ _id: request.params.contactId }, (error, contact) => {
+      this.returnJsonContactOrError(response, error, { "message": "Successfully deleted contact: " + contact["name"] });
+    });
+
+  }
+
 }
