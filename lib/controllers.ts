@@ -38,4 +38,12 @@ export class ContactController {
 
   }
 
+  public updateContact(request: Request, response: Response) {
+
+    Contact.findOneAndUpdate({ _id: request.params.contactId }, request.body, { new: true }, (error, contact) => { 
+      this.returnJsonContactOrError(response, error, contact);
+    });
+
+  }
+
 }
