@@ -22,7 +22,7 @@ export class ContactController {
 
   public getContact(request: Request, response: Response) {
 
-    Contact.findbyId(request.params.contactId, (error, contact) => {
+    Contact.findById(request.params.contactId, (error, contact) => {
       returnJsonContactOrError(response, error, contact);
     })
 
@@ -48,8 +48,8 @@ export class ContactController {
 
   public deleteContact(request: Request, response: Response) {
 
-    Contact.remove({ _id: request.params.contactId }, (error, contact) => {
-      returnJsonContactOrError(response, error, { "message": "Successfully deleted contact: " + contact["name"] });
+    Contact.deleteOne({ _id: request.params.contactId }, (error, contact) => {
+      returnJsonContactOrError(response, error, { "message": "Successfully deleted contact with ID: " + request.params.contactId });
     });
 
   }
