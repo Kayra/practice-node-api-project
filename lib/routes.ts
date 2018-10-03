@@ -17,9 +17,7 @@ export class Routes {
     })
 
     app.route('/contact')
-
     .get(this.contactController.getContacts)
-
     .post(this.contactController.addNewContact)
 
     .put((request: Request, response: Response) => {
@@ -33,6 +31,9 @@ export class Routes {
         message: "This is the DELETE endpoint for contacts."
       })
     })
+
+    app.route('/contact/:contactId')
+    .get(this.contactController.getContact)
 
   }
 
