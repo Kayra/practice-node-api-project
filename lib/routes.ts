@@ -20,18 +20,6 @@ export class Routes {
     .get(this.contactController.getContacts)
     .post(this.contactController.addNewContact)
 
-    .put((request: Request, response: Response) => {
-      response.status(200).send({
-        message: "This is the PUT endpoint for contacts."
-      })
-    })
-
-    .delete((request: Request, response: Response) => {
-      response.status(200).send({
-        message: "This is the DELETE endpoint for contacts."
-      })
-    })
-
     app.route('/contact/:contactId')
     .get(this.contactController.getContact)
     .put(this.contactController.updateContact)
